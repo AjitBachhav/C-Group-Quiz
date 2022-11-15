@@ -43,6 +43,32 @@ public class Main {
 			e.printStackTrace();
 		}
 		
+		/*finally {
+			try {
+				con.close();
+				ps.close();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}*/
+		String query1 = "select * from studentdata order by Score desc";
+		try {
+			 ps=con.prepareStatement(query1);
+			 
+			 
+			 ResultSet rs = ps.executeQuery();
+			 System.out.println("SCORECARD=>");
+			 while(rs.next()) {
+				 System.out.print("ID>>"+rs.getInt(1)+", ");
+				 System.out.print("Name>>"+rs.getString(2)+", ");
+				 System.out.print("Score>>"+rs.getInt(3)+", ");
+				 System.out.println("Grade>>"+rs.getString(4)+", ");
+			 }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		finally {
 			try {
 				con.close();
@@ -52,6 +78,5 @@ public class Main {
 				e.printStackTrace();
 			}
 		}
-			
-	}
+	}		
 }
